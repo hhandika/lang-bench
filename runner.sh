@@ -25,8 +25,11 @@ go build -o $GO_OUT main.go
 # Compile Java code
 javac main.java
 
+# Compile typescript code
+tsc main.ts
+
 # Run benchmark, we warmup to fill the cache
-hyperfine --warmup 3 "./$C_OUT" "./$C_OUT_OPT" "./$CPP_OUT" "./$RS_OUT" "./$GO_OUT" "java main" "python main.py"
+hyperfine --warmup 3 "./$C_OUT" "./$C_OUT_OPT" "./$CPP_OUT" "./$RS_OUT" "./$GO_OUT" "java main" "python main.py" "node main.js"
 
 # Clean up
-rm $C_OUT $C_OUT_OPT $RS_OUT $GO_OUT main.class
+rm $C_OUT $C_OUT_OPT $RS_OUT $GO_OUT main.class main.js
