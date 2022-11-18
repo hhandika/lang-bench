@@ -36,4 +36,4 @@ dart compile exe main.dart -o $DART_OUT
 hyperfine --warmup 3 "./$C_OUT" "./$C_OUT_OPT" "./$CPP_OUT" "./$RS_OUT" "./$GO_OUT" "./$DART_OUT" "java main" "python main.py" "node main.js"
 
 # Clean up
-rm $C_OUT $C_OUT_OPT $RS_OUT $GO_OUT $DART_OUT main.class main.js
+rm $C_OUT $C_OUT_OPT $RS_OUT $GO_OUT $DART_OUT $CPP_OUT main.class main.js
