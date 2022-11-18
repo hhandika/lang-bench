@@ -1,10 +1,11 @@
 #!/usr/bin/env fish
 
 set C_OUT "main-c"
-set C_OUT_OPT "main_opt"
+set C_OUT_OPT "main-opt"
 set CPP_OUT "main-cpp"
 set RS_OUT "main-rs"
 set GO_OUT "main-go"
+set DART_OUT "main-dart"
 
 
 # Compile C code
@@ -28,8 +29,11 @@ javac main.java
 # Compile typescript code
 tsc main.ts
 
+# Compile dart code
+dart compile exe main.dart -o $DART_OUT
+
 # Run benchmark, we warmup to fill the cache
-hyperfine --warmup 3 "./$C_OUT" "./$C_OUT_OPT" "./$CPP_OUT" "./$RS_OUT" "./$GO_OUT" "java main" "python main.py" "node main.js"
+hyperfine --warmup 3 "./$C_OUT" "./$C_OUT_OPT" "./$CPP_OUT" "./$RS_OUT" "./$GO_OUT" "./$DART_OUT" "java main" "python main.py" "node main.js"
 
 # Clean up
-rm $C_OUT $C_OUT_OPT $RS_OUT $GO_OUT main.class main.js
+rm $C_OUT $C_OUT_OPT $RS_OUT $GO_OUT $DART_OUT main.class main.js
